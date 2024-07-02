@@ -7,7 +7,6 @@ import { SimpleTreeView } from '@mui/x-tree-view/SimpleTreeView';
 import { TreeItem, treeItemClasses } from '@mui/x-tree-view/TreeItem';
 import { styled, alpha } from '@mui/material/styles';
 import { Sector } from '../types/Sector';
-import { IoMdClose } from 'react-icons/io';
 
 const CustomTreeItem = styled(TreeItem)(({ theme }) => ({
   color:
@@ -48,39 +47,53 @@ interface TreeViewDialogProps {
 
 const TreeViewDialog: React.FC<TreeViewDialogProps> = ({ open, onClose, sector }) => {
   return (
-    <Dialog open={open} >
-      <IoMdClose className=''/>
-      <Box sx={{ minHeight: 600, minWidth: 550, padding: 2 }}>
-        <SimpleTreeView
-          defaultExpandedItems={['sector-name']}
-          slots={{
-            expandIcon: AddBoxIcon,
-            collapseIcon: IndeterminateCheckBoxIcon,
+    <Dialog open={open}>
+      <h6 className='p-7 pb-0 font-bold text-gray-600'>View Tree</h6>
+      <Box sx={{ minHeight: 500, minWidth: 550, padding: 2 }}>
+        <Box
+          sx={{
+            height: 430,
+            overflowY: 'auto',
+            border: '1px solid #e0e0e0',
+            borderRadius: '5px',
+            padding: 2,
           }}
         >
-          {/* Render the top-level TreeItem with a unique itemId */}
-          <CustomTreeItem itemId={`sector-${sector.name}`} label={sector.name}>
-            {/* Map over categories */}
-            {sector.category.map((cat, catIndex) => (
-              <CustomTreeItem key={`category-${catIndex}`} itemId={`category-${catIndex}`} label={cat}>
-                {/* Map over subcategories */}
-                {sector.subCategory.map((subCat, subCatIndex) => (
-                  <CustomTreeItem key={`subCategory-${subCatIndex}`} itemId={`subCategory-${catIndex}-${subCatIndex}`} label={subCat}>
-                    {/* Map over divisions */}
-                    {sector.division.map((div, divIndex) => (
-                      <CustomTreeItem key={`division-${divIndex}`} itemId={`division-${catIndex}-${subCatIndex}-${divIndex}`} label={div}>
-                        {/* Map over sub-divisions */}
-                        {sector.subDivision.map((subDiv, subDivIndex) => (
-                          <CustomTreeItem key={`subDivision-${subDivIndex}`} itemId={`subDivision-${catIndex}-${subCatIndex}-${divIndex}-${subDivIndex}`} label={subDiv} />
-                        ))}
-                      </CustomTreeItem>
-                    ))}
-                  </CustomTreeItem>
-                ))}
-              </CustomTreeItem>
-            ))}
-          </CustomTreeItem>
-        </SimpleTreeView>
+          <SimpleTreeView
+            defaultExpandedItems={['sector-name']}
+            slots={{
+              expandIcon: AddBoxIcon,
+              collapseIcon: IndeterminateCheckBoxIcon,
+            }}
+          >
+            <CustomTreeItem itemId={`sector-${sector.name}`} label={sector.name}>
+              {sector.category.map((cat, catIndex) => (
+                <CustomTreeItem key={`category-${catIndex}`} itemId={`category-${catIndex}`} label={cat}>
+                  {sector.subCategory.map((subCat, subCatIndex) => (
+                    <CustomTreeItem key={`subCategory-${subCatIndex}`} itemId={`subCategory-${catIndex}-${subCatIndex}`} label={subCat}>
+                      {sector.division.map((div, divIndex) => (
+                        <CustomTreeItem key={`division-${divIndex}`} itemId={`division-${catIndex}-${subCatIndex}-${divIndex}`} label={div}>
+                          {sector.subDivision.map((subDiv, subDivIndex) => (
+                            <CustomTreeItem key={`subDivision-${subDivIndex}`} itemId={`subDivision-${catIndex}-${subCatIndex}-${divIndex}-${subDivIndex}`} label={subDiv} />
+                          ))}
+                        </CustomTreeItem>
+                      ))}
+                    </CustomTreeItem>
+                  ))}
+                </CustomTreeItem>
+              ))}
+            </CustomTreeItem>
+          </SimpleTreeView>
+        </Box>
+        <div className='text-end'>
+          <button
+            role="button"
+            onClick={onClose}
+            className="my-5 px-5 py-1 bg-gray-200 rounded text-gray-600 font-bold"
+          >
+            Close
+          </button>
+        </div>
       </Box>
     </Dialog>
   );
