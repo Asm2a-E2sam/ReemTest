@@ -29,9 +29,9 @@ const Home: React.FC = () => {
   return (
     <div className="bg-gray-100 min-h-screen ">
       <div className="bg-white p-2 shadow-md mb-8 ">
-        <div className="flex justify-between items-center mb-4">
+        <div className="flex justify-between items-center mb-1">
           <div className="flex items-center">
-            <h3 className="text-2xl font-bold ms-20 text-gray-800">Configuration</h3>
+            <h2 className="font-bold ms-20 text-gray-800 border-r pr-2 py-2 mr-1">Configuration</h2>
             <div className="relative inline-block text-left ml-2">
               <button
                 type="button"
