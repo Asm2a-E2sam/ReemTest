@@ -31,7 +31,7 @@ const Home: React.FC = () => {
       <div className="bg-white p-2 shadow-md mb-8 ">
         <div className="flex justify-between items-center mb-4">
           <div className="flex items-center">
-            <h1 className="text-2xl font-bold ms-20">Configuration</h1>
+            <h3 className="text-2xl font-bold ms-20 text-gray-800">Configuration</h3>
             <div className="relative inline-block text-left ml-2">
               <button
                 type="button"
