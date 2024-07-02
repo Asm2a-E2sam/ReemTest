@@ -121,7 +121,7 @@ const SectorTable: React.FC<SectorTableProps> = ({ sectors, setSectors }) => {
               <div className="text-sm text-gray-400 mx-3">{sector.subDivision}</div>
             </div>
             <div className="flex">
-            <AssignSheet/>
+            <AssignSheet sector={sector}/>
             <button onClick={() => handleTreeViewClick(sector)} className="mr-2">
               <TreeViewIcon className="h-6 w-6 bg-gray-200 p-1 ml-5 text-gray-700"/>
             </button>
