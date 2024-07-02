@@ -13,7 +13,7 @@ interface SectorRowProps {
 const SectorRow: React.FC<SectorRowProps> = ({ sector, index, onAddItem, editingIndex, setEditingIndex }) => {
   return (
     <>
-      <tr className='hover:bg-gray-50 row h-40 align-text-top'>
+      <tr className='hover:bg-gray-50 row h-28 align-text-top'>
         <td className="border border-gray-300 px-2 py-2 columns-2">
           {sector.category}
           {editingIndex?.field === 'category' && editingIndex.index === index && (

@@ -104,7 +104,8 @@ const SectorTable: React.FC<SectorTableProps> = ({ sectors, setSectors }) => {
   return (
     <div className="container mx-auto px-4 ms-14 w-[95vw]">
       {sectors.map((sector, index) => (
-        <div key={index} className="mb-4 bg-white p-2 shadow-md rounded-md hover:border-2 border-green-500">
+        <div key={index} className="mb-4 bg-white p-2 shadow-md rounded-md hover:border-2 border-green-500"
+        style={{minHeight:"250px"}}>
           <div className="flex justify-between items-center mb-2">
             <div className="flex">
               <div className="text-lg font-bold mt-2 text-gray-400"><MdArrowForwardIos /></div>
