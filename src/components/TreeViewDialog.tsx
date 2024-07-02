@@ -49,8 +49,11 @@ interface TreeViewDialogProps {
 const TreeViewDialog: React.FC<TreeViewDialogProps> = ({ open, onClose, sector }) => {
   return (
     <Dialog open={open} >
-      <IoMdClose className=''/>
       <Box sx={{ minHeight: 600, minWidth: 550, padding: 2 }}>
+        <IoMdClose className={`text-4xl`} styles={{
+          position: 'absolute',
+          top: '10px',
+        }}/>
         <SimpleTreeView
           defaultExpandedItems={['sector-name']}
           slots={{
