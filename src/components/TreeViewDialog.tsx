@@ -7,10 +7,14 @@ import { SimpleTreeView } from '@mui/x-tree-view/SimpleTreeView';
 import { TreeItem, treeItemClasses } from '@mui/x-tree-view/TreeItem';
 import { styled, alpha } from '@mui/material/styles';
 import { Sector } from '../types/Sector';
+import { IoMdClose } from 'react-icons/io';
 
-// Styled CustomTreeItem with MUI styles
 const CustomTreeItem = styled(TreeItem)(({ theme }) => ({
-  color: theme.palette.mode === 'light' ? theme.palette.grey[800] : theme.palette.grey[200],
+  color:
+    theme.palette.mode === 'light'
+      ? theme.palette.grey[800]
+      : theme.palette.grey[200],
+
   [`& .${treeItemClasses.content}`]: {
     borderRadius: theme.spacing(0.5),
     padding: theme.spacing(0.5, 1),
@@ -22,9 +26,10 @@ const CustomTreeItem = styled(TreeItem)(({ theme }) => ({
   },
   [`& .${treeItemClasses.iconContainer}`]: {
     borderRadius: '50%',
-    backgroundColor: theme.palette.mode === 'light'
-      ? alpha(theme.palette.primary.main, 0.25)
-      : theme.palette.primary.dark,
+    backgroundColor:
+      theme.palette.mode === 'light'
+        ? alpha(theme.palette.primary.main, 0.25)
+        : theme.palette.primary.dark,
     color: theme.palette.mode === 'dark' && theme.palette.primary.contrastText,
     padding: theme.spacing(0, 1.2),
   },
@@ -43,7 +48,8 @@ interface TreeViewDialogProps {
 
 const TreeViewDialog: React.FC<TreeViewDialogProps> = ({ open, onClose, sector }) => {
   return (
-    <Dialog open={open} onClose={onClose}>
+    <Dialog open={open} >
+      <IoMdClose className=''/>
       <Box sx={{ minHeight: 600, minWidth: 550, padding: 2 }}>
         <SimpleTreeView
           defaultExpandedItems={['sector-name']}
