@@ -15,32 +15,32 @@ const SectorRow: React.FC<SectorRowProps> = ({ key, sector, index, onAddItem, ed
   return (
     <>
       <tr className='hover:bg-gray-50 row h-40 align-text-top' key= {key}>
-        <td className="border border-gray-300 px-2 py-2 col-2">
+        <td className="border border-gray-300 px-2 py-2 columns-2">
           {sector.category}
           {editingIndex?.field === 'category' && editingIndex.index === index && (
             <SectorInputRow field="category" index={index} onAddItem={onAddItem} onCancel={() => setEditingIndex(null)} />
           )}
           
         </td>
-        <td className="border border-gray-300 px-4 py-2 col-2">
+        <td className="border border-gray-300 px-4 py-2 columns-2">
           {sector.field}
           {editingIndex?.field === 'field' && editingIndex.index === index && (
             <SectorInputRow field="field" index={index} onAddItem={onAddItem} onCancel={() => setEditingIndex(null)} />
           )}
         </td>
-        <td className="border border-gray-300 px-2 py-2 col-2">
+        <td className="border border-gray-300 px-2 py-2 columns-2">
           {sector.subCategory}
           {editingIndex?.field === 'subCategory' && editingIndex.index === index && (
             <SectorInputRow field="subCategory" index={index} onAddItem={onAddItem} onCancel={() => setEditingIndex(null)} />
           )}
         </td>
-        <td className="border border-gray-300 px-2 py-2 col-2">
+        <td className="border border-gray-300 px-2 py-2 columns-2">
           {sector.division}
           {editingIndex?.field === 'division' && editingIndex.index === index && (
             <SectorInputRow field="division" index={index} onAddItem={onAddItem} onCancel={() => setEditingIndex(null)} />
           )}
         </td>
-        <td className="border border-gray-300 px-2 py-2 col-2">
+        <td className="border border-gray-300 px-2 py-2 columns-2">
           {sector.subDivision}
           {editingIndex?.field === 'subDivision' && editingIndex.index === index && (
             <SectorInputRow field="subDivision" index={index} onAddItem={onAddItem} onCancel={() => setEditingIndex(null)} />

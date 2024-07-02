@@ -20,8 +20,9 @@ const SectorInputRow: React.FC<SectorInputRowProps> = ({ field, index, onAddItem
   };
 
   return (
+    // <div className="flex bg-gray-200 p-2 justify-between w-fit">
     <div className="w-16 bg-gray-100 px-4">
-    <div className="flex w-56 bg-gray-100 px-4">
+    <div className="flex w-fit bg-gray-100 px-4">
       <input
         type="text"
         className="w-fit outline-none bg-gray-100"
