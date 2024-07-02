@@ -14,7 +14,7 @@ interface SectorTableProps {
 }
 
 const SectorTable: React.FC<SectorTableProps> = ({ sectors, setSectors }) => {
-  let treeEx: Sector= {
+  const treeEx: Sector= {
     name: "Custom Sector A",
     category:[
       "custom category A",

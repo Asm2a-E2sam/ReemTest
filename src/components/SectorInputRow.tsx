@@ -1,11 +1,7 @@
 import React, { useState } from 'react';
 import { Sector } from '../types/Sector';
-import CheckOutlinedIcon from '@mui/icons-material/CheckOutlined';
 import { MdOutlineCheck } from "react-icons/md";
-
-import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined';
 import { IoClose } from "react-icons/io5";
-
 interface SectorInputRowProps {
   field: keyof Sector;
   index: number;
