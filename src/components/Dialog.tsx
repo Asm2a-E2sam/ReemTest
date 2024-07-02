@@ -30,7 +30,7 @@ const Dialog: React.FC<DialogProps> = ({ onAddSector, onClose }) => {
         <div className="relative p-4 font-sans text-base antialiased font-light leading-relaxed border-t border-b border-t-blue-gray-100 border-b-blue-gray-100 text-blue-gray-500">
           <input
             type="text"
-            className="border p-2 w-full mb-4"
+            className="border p-2 w-full mb-4 outline-gray-200"
             placeholder="Sector Nam*"
             value={name}
             onChange={(e) => setName(e.target.value)}
