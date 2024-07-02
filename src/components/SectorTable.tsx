@@ -15,57 +15,57 @@ interface SectorTableProps {
 }
 
 const SectorTable: React.FC<SectorTableProps> = ({ sectors, setSectors }) => {
-  const treeEx: Sector= {
+  const treeEx: Sector = {
     name: "Custom Sector A",
-    category:[
+    category: [
       "custom category A",
       "custom category B",
       "custom category C",
       "custom category D",
     ],
-    field:[
+    field: [
       "custom field A",
       "custom field B",
       "custom field C",
     ],
-    subCategory:[
-     "custom subcategory A",
-     "custom subcategory B",
-     "custom subcategory C",
-    ], 
-    division:[
+    subCategory: [
+      "custom subcategory A",
+      "custom subcategory B",
+      "custom subcategory C",
+    ],
+    division: [
       "custom division A",
       "custom division B",
     ],
-    subDivision:[
+    subDivision: [
       "custom subDivision A",
     ]
 
-// 		{
-// 		custom field A	{}
-// 		custom field B	
-// 			{
-// 			custom subcategory A
-// 			custom subcategory B
-// 			custom subcategory C
-// 				{
-// 				custom division A
-// 				custom division B
-// 				}
-// 			}
-// 		custom field C {}
-// 		}
-// 	custom category B {}	
-// 	custom category C {}	
-// 	custom category D {}
-// }
+    // 		{
+    // 		custom field A	{}
+    // 		custom field B	
+    // 			{
+    // 			custom subcategory A
+    // 			custom subcategory B
+    // 			custom subcategory C
+    // 				{
+    // 				custom division A
+    // 				custom division B
+    // 				}
+    // 			}
+    // 		custom field C {}
+    // 		}
+    // 	custom category B {}	
+    // 	custom category C {}	
+    // 	custom category D {}
+    // }
   }
   const [editingIndex, setEditingIndex] = useState<{ field: keyof Sector, index: number } | null>(null);
   const [filledFields, setFilledFields] = useState<Record<number, Set<keyof Sector>>>({});
   const [dialogOpen, setDialogOpen] = useState(false);
   const [selectedSector, setSelectedSector] = useState<Sector | null>(null);
 
-    const handleAddItem = (field: keyof Sector, name: string, index: number) => {
+  const handleAddItem = (field: keyof Sector, name: string, index: number) => {
     const updatedSectors = sectors.map((sector, i) => {
       if (i === index) {
         let updatedField: string[];
@@ -109,25 +109,25 @@ const SectorTable: React.FC<SectorTableProps> = ({ sectors, setSectors }) => {
             <div className="flex">
               <div className="text-lg font-bold mt-2 text-gray-400"><MdArrowForwardIos /></div>
               <div className="text-xl font-bold mx-3">{sector.name}</div>
-              {sector.category.length!==0&& <div className="text-sm font-bold mt-2 text-gray-400"><MdArrowForwardIos /></div>}
+              {sector.category.length !== 0 && <div className="text-sm font-bold mt-2 text-gray-400"><MdArrowForwardIos /></div>}
               <div className="text-sm text-gray-400 mx-3">{sector.category}</div>
-              {sector.field.length!==0&& <div className="text-sm font-bold mt-2 text-gray-400"><MdArrowForwardIos /></div>}
+              {sector.field.length !== 0 && <div className="text-sm font-bold mt-2 text-gray-400"><MdArrowForwardIos /></div>}
               <div className="text-sm text-gray-400 mx-3">{sector.field}</div>
-              {sector.subCategory.length!==0&& <div className="text-sm font-bold mt-2 text-gray-400"><MdArrowForwardIos /></div>}
+              {sector.subCategory.length !== 0 && <div className="text-sm font-bold mt-2 text-gray-400"><MdArrowForwardIos /></div>}
               <div className="text-sm text-gray-400 mx-3">{sector.subCategory}</div>
-              {sector.division.length!==0&& <div className="text-sm font-bold mt-2 text-gray-400"><MdArrowForwardIos /></div>}
+              {sector.division.length !== 0 && <div className="text-sm font-bold mt-2 text-gray-400"><MdArrowForwardIos /></div>}
               <div className="text-sm text-gray-400 mx-3">{sector.division}</div>
-              {sector.subDivision.length!==0&& <div className="text-sm font-bold mt-2 text-gray-400"><MdArrowForwardIos /></div>}
+              {sector.subDivision.length !== 0 && <div className="text-sm font-bold mt-2 text-gray-400"><MdArrowForwardIos /></div>}
               <div className="text-sm text-gray-400 mx-3">{sector.subDivision}</div>
             </div>
             <div className="flex">
-            <AssignSheet sector={sector}/>
-            <button onClick={() => handleTreeViewClick(sector)} className="mr-2">
-              <TreeViewIcon className="h-6 w-6 bg-gray-200 p-1 ml-5 text-gray-700"/>
-            </button>
-            <div>
-              <IoEyeOffOutline className="h-6 w-6 bg-gray-200 p-1 mt-1 text-gray-700" role='button'/>
-            </div>
+              <AssignSheet sector={sector} />
+              <button onClick={() => handleTreeViewClick(sector)} className="mr-2">
+                <TreeViewIcon className="h-6 w-6 bg-gray-200 p-1 ml-5 text-gray-700" />
+              </button>
+              <div>
+                <IoEyeOffOutline className="h-6 w-6 bg-gray-200 p-1 mt-1 text-gray-700" role='button' />
+              </div>
             </div>
           </div>
           <table className="min-w-full bg-white border border-gray-300 px-4 py-2">
@@ -191,26 +191,23 @@ const SectorTable: React.FC<SectorTableProps> = ({ sectors, setSectors }) => {
               </tr>
             </thead>
             <tbody>
-  {sectors.map((sector, index) => (
-    <SectorRow
-      key={index}
-      sector={sector}
-      index={index}
-      onAddItem={handleAddItem}
-      editingIndex={editingIndex}
-      setEditingIndex={setEditingIndex}
-    />
-  ))}
-</tbody>
-    
+              <SectorRow
+                sector={sector}
+                index={index}
+                onAddItem={handleAddItem}
+                editingIndex={editingIndex}
+                setEditingIndex={setEditingIndex}
+              />
+            </tbody>
+
           </table>
         </div>
       ))}
       {dialogOpen && selectedSector && (
-        <TreeViewDialog 
-          open={dialogOpen} 
-          onClose={() => setDialogOpen(false)} 
-          sector={treeEx} 
+        <TreeViewDialog
+          open={dialogOpen}
+          onClose={() => setDialogOpen(false)}
+          sector={treeEx}
         />
       )}
     </div>
