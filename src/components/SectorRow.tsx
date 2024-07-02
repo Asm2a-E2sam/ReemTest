@@ -14,7 +14,7 @@ interface SectorRowProps {
 const SectorRow: React.FC<SectorRowProps> = ({ key, sector, index, onAddItem, editingIndex, setEditingIndex}) => {
   return (
     <>
-      <tr className='hover:bg-gray-50 row h-40 align-text-top' key= {key}>
+      <tr className='hover:bg-gray-50 row align-text-top' key= {key}>
         <td className="border border-gray-300 px-2 py-2 columns-2">
           {sector.category}
           {editingIndex?.field === 'category' && editingIndex.index === index && (
