@@ -3,6 +3,10 @@ import SectorRow from './SectorRow';
 import { Sector } from '../types/Sector';
 import TreeViewDialog from './TreeViewDialog';
 import TreeViewIcon from '@mui/icons-material/AccountTree';
+import { IoEyeOffOutline } from "react-icons/io5";
+import { GoPlus } from "react-icons/go";
+import { MdArrowForwardIos } from "react-icons/md";
+
 
 interface SectorTableProps {
   sectors: Sector[];
@@ -52,90 +56,88 @@ const SectorTable: React.FC<SectorTableProps> = ({ sectors, setSectors }) => {
   };
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto px-4 ms-14 w-[95vw]">
       {sectors.map((sector, index) => (
-        <div key={index} className="mb-8 shadow-lg bg-white p-8 shadow-md rounded-md">
+        <div key={index} className="mb-4 bg-white p-2 shadow-md rounded-md hover:border-2 border-green-500">
           <div className="flex justify-between items-center mb-2">
-            <h2 className="text-xl font-bold">{sector.name}</h2>
-            <button onClick={() => handleTreeViewClick(sector)}>
-              <TreeViewIcon />
+            <div className="flex">
+              <div className="text-lg font-bold mt-2 text-gray-400"><MdArrowForwardIos /></div>
+              <div className="text-xl font-bold mx-3">{sector.name}</div>
+              {sector.category.length!==0&& <div className="text-sm font-bold mt-2 text-gray-400"><MdArrowForwardIos /></div>}
+              <div className="text-sm text-gray-400 mx-3">{sector.category}</div>
+              {sector.field.length!==0&& <div className="text-sm font-bold mt-2 text-gray-400"><MdArrowForwardIos /></div>}
+              <div className="text-sm text-gray-400 mx-3">{sector.field}</div>
+              {sector.subCategory.length!==0&& <div className="text-sm font-bold mt-2 text-gray-400"><MdArrowForwardIos /></div>}
+              <div className="text-sm text-gray-400 mx-3">{sector.subCategory}</div>
+              {sector.division.length!==0&& <div className="text-sm font-bold mt-2 text-gray-400"><MdArrowForwardIos /></div>}
+              <div className="text-sm text-gray-400 mx-3">{sector.division}</div>
+              {sector.subDivision.length!==0&& <div className="text-sm font-bold mt-2 text-gray-400"><MdArrowForwardIos /></div>}
+              <div className="text-sm text-gray-400 mx-3">{sector.subDivision}</div>
+            </div>
+            <div className="flex">
+            <button onClick={() => handleTreeViewClick(sector)} className="mr-2">
+              <TreeViewIcon className="h-6 w-6 bg-gray-200 p-1 ml-5 text-gray-700"/>
             </button>
+            <div>
+              <IoEyeOffOutline className="h-6 w-6 bg-gray-200 p-1 mt-1 text-gray-700" role='button'/>
+            </div>
+            </div>
           </div>
           <table className="min-w-full bg-white border border-gray-300 px-4 py-2">
             <thead>
               <tr>
-                <th className="border border-gray-300 px-4 py-2">
+                <th className="border border-gray-300 px-4 py-2 text-[.8vw] text-gray-500">
                   <div className="flex justify-between items-center">
                     <span>Category</span>
                     <button
                       onClick={() => setEditingIndex({ field: 'category', index })}
                       className={isFieldFilled(index, 'category') ? 'hidden' : ''}
                     >
-                      <svg className="h-6 w-6 text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-                        <line x1="12" y1="8" x2="12" y2="16" />
-                        <line x1="8" y1="12" x2="16" y2="12" />
-                      </svg>
+                      <GoPlus className="h-6 w-6 text-green-500 bg-green-100" />
                     </button>
                   </div>
                 </th>
-                <th className="border border-gray-300 px-4 py-2">
+                <th className="border border-gray-300 px-4 py-2 text-[.8vw] text-gray-500">
                   <div className="flex justify-between items-center">
                     <span>Field</span>
                     <button
                       onClick={() => setEditingIndex({ field: 'field', index })}
                       className={isFieldFilled(index, 'category') && !isFieldFilled(index, 'field') ? '' : 'hidden'}
                     >
-                      <svg className="h-6 w-6 text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-                        <line x1="12" y1="8" x2="12" y2="16" />
-                        <line x1="8" y1="12" x2="16" y2="12" />
-                      </svg>
+                      <GoPlus className="h-6 w-6 text-green-500 bg-green-100" />
                     </button>
                   </div>
                 </th>
-                <th className="border border-gray-300 px-4 py-2">
+                <th className="border border-gray-300 px-4 py-2 text-[.8vw] text-gray-500">
                   <div className="flex justify-between items-center">
                     <span>Sub Category</span>
                     <button
                       onClick={() => setEditingIndex({ field: 'subCategory', index })}
                       className={isFieldFilled(index, 'field') && !isFieldFilled(index, 'subCategory') ? '' : 'hidden'}
                     >
-                      <svg className="h-6 w-6 text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-                        <line x1="12" y1="8" x2="12" y2="16" />
-                        <line x1="8" y1="12" x2="16" y2="12" />
-                      </svg>
+                      <GoPlus className="h-6 w-6 text-green-500 bg-green-100" />
                     </button>
                   </div>
                 </th>
-                <th className="border border-gray-300 px-4 py-2">
+                <th className="border border-gray-300 px-4 py-2 text-[.8vw] text-gray-500">
                   <div className="flex justify-between items-center">
                     <span>Division</span>
                     <button
                       onClick={() => setEditingIndex({ field: 'division', index })}
                       className={isFieldFilled(index, 'subCategory') && !isFieldFilled(index, 'division') ? '' : 'hidden'}
                     >
-                      <svg className="h-6 w-6 text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-                        <line x1="12" y1="8" x2="12" y2="16" />
-                        <line x1="8" y1="12" x2="16" y2="12" />
-                      </svg>
+                      <GoPlus className="h-6 w-6 text-green-500 bg-green-100" />
                     </button>
                   </div>
                 </th>
-                <th className="border border-gray-300 px-4 py-2">
+                <th className="border border-gray-300 px-4 py-2 text-[.8vw] text-gray-500">
                   <div className="flex justify-between items-center">
                     <span>Sub Division</span>
                     <button
                       onClick={() => setEditingIndex({ field: 'subDivision', index })}
                       className={isFieldFilled(index, 'division') && !isFieldFilled(index, 'subDivision') ? '' : 'hidden'}
                     >
-                      <svg className="h-6 w-6 text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-                        <line x1="12" y1="8" x2="12" y2="16" />
-                        <line x1="8" y1="12" x2="16" y2="12" />
-                      </svg>
+                      <GoPlus className="h-6 w-6 text-green-500 bg-green-100" />
                     </button>
                   </div>
                 </th>
@@ -155,12 +157,6 @@ const SectorTable: React.FC<SectorTableProps> = ({ sectors, setSectors }) => {
 </tbody>
     
           </table>
-          <button
-              onClick={() => handleAddItem('category', '', index)}
-                    className="p-2 bg-green-500 text-white rounded"
-                  >
-                    Add New Row
-                  </button>
         </div>
       ))}
       {dialogOpen && selectedSector && (
