@@ -14,6 +14,51 @@ interface SectorTableProps {
 }
 
 const SectorTable: React.FC<SectorTableProps> = ({ sectors, setSectors }) => {
+  let treeEx: Sector= {
+    name: "Custom Sector A",
+    category:[
+      "custom category A",
+      "custom category B",
+      "custom category C",
+      "custom category D",
+    ],
+    field:[
+      "custom field A",
+      "custom field B",
+      "custom field C",
+    ],
+    subCategory:[
+     "custom subcategory A",
+     "custom subcategory B",
+     "custom subcategory C",
+    ], 
+    division:[
+      "custom division A",
+      "custom division B",
+    ],
+    subDivision:[
+      "custom subDivision A",
+    ]
+
+// 		{
+// 		custom field A	{}
+// 		custom field B	
+// 			{
+// 			custom subcategory A
+// 			custom subcategory B
+// 			custom subcategory C
+// 				{
+// 				custom division A
+// 				custom division B
+// 				}
+// 			}
+// 		custom field C {}
+// 		}
+// 	custom category B {}	
+// 	custom category C {}	
+// 	custom category D {}
+// }
+  }
   const [editingIndex, setEditingIndex] = useState<{ field: keyof Sector, index: number } | null>(null);
   const [filledFields, setFilledFields] = useState<Record<number, Set<keyof Sector>>>({});
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -163,7 +208,7 @@ const SectorTable: React.FC<SectorTableProps> = ({ sectors, setSectors }) => {
         <TreeViewDialog 
           open={dialogOpen} 
           onClose={() => setDialogOpen(false)} 
-          sector={selectedSector} 
+          sector={treeEx} 
         />
       )}
     </div>
